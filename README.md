@@ -2,7 +2,7 @@
 
 **Exam date:** Sunday, January 24, 2027  
 **Study start:** October 27, 2026  
-**Time available:** 89 days (~13 weeks)  
+**Study window:** October 27, 2026 – January 24, 2027 (~13 weeks)  
 **Study target:** 7–10 hours/week (adjust as needed)  
 **Primary platform:** [AWS Skill Builder](https://skillbuilder.aws/)  
 **Status:** 🟡 In progress
@@ -52,9 +52,9 @@ Source: [AWS certification update for DVA-C03](https://aws.amazon.com/blogs/trai
 
 | Week | Dates | Focus | Done |
 | --- | --- | --- | --- |
-| 1 | Oct 27–Nov 1 | Setup, exam overview, IAM & fundamentals | ⬜ |
-| 2 | Nov 2–8 | AWS SDK, S3, EC2 & application fundamentals | ⬜ |
-| 3 | Nov 9–15 | Lambda & API Gateway | ⬜ |
+| 1 | Oct 27–Nov 1 | Essential AWS foundations + first Lambda | ⬜ |
+| 2 | Nov 2–8 | Lambda deep dive: IAM, events, testing, logging | ⬜ |
+| 3 | Nov 9–15 | API Gateway + Lambda deployment and integration tests | ⬜ |
 | 4 | Nov 16–22 | DynamoDB and data access | ⬜ |
 | 5 | Nov 23–29 | Integration, events & asynchronous workflows | ⬜ |
 | 6 | Nov 30–Dec 6 | Application security | ⬜ |
@@ -68,37 +68,52 @@ Source: [AWS certification update for DVA-C03](https://aws.amazon.com/blogs/trai
 
 ## Weekly plan
 
-### Week 1 — Oct 27–Nov 1: Setup and AWS fundamentals
+### Week 1 — Oct 27–Nov 1: Essential AWS foundations and first Lambda
 
-**Skill Builder:** Search for the *Developer – Associate Exam Prep Plan*, *AWS Cloud Practitioner Essentials* (use selectively for unfamiliar topics), and IAM-related digital training.
+**Why this order?** Keep the fundamentals **before** Lambda, but make them a short, practical prerequisite—not an entire week of theory. Lambda requires an execution role, permissions, a Region, and logging. Start Lambda as soon as these ideas make sense.
 
-- [X] Read the DVA-C03 exam overview and four exam domain weights.
-- [X] Enroll in the relevant Skill Builder exam [prep plan](https://skillbuilder.aws/category/exam-prep/developer-associate-DVA-C03) DVA-C03.
-- [ ] Complete the **Official Practice Question Set** as a baseline if an appropriate DVA-C03 set is available; record score and weak areas.
-- [ ] Review AWS Regions/AZs, shared responsibility, IAM roles/policies, AWS CLI, and CloudShell.
-- [ ] Configure MFA, a lab identity, budgets, and alerts.
-- [ ] **Lab:** Make an AWS CLI call with a least-privilege role; explain credentials vs. roles.
-- [ ] Commit setup notes (`notes/01-fundamentals.md`).
+**AWS Skill Builder searches:** *AWS global infrastructure*, *AWS IAM fundamentals*, *AWS CloudShell*, *AWS Lambda foundations*. Use short introductory lessons; don't feel obligated to finish all of Cloud Practitioner Essentials.
 
-### Week 2 — Nov 2–8: Application foundations
+- [x] Read the DVA-C03 exam overview and four exam domain weights.
+- [x] Enroll in the relevant Skill Builder [DVA-C03 prep plan](https://skillbuilder.aws/category/exam-prep/developer-associate-DVA-C03).
+- [x] Take Official Practice Question Set baseline: **6/20 (30%)**; see assessment below.
+- [ ] **NEXT:** Review Regions vs. Availability Zones, shared responsibility, IAM users vs. roles vs. policies, and AWS CLI vs. CloudShell (aim for 1–2 focused sessions).
+- [ ] Configure MFA, safe lab access, AWS Budgets and billing alerts before creating resources.
+- [ ] **Mini-lab:** In CloudShell run `aws sts get-caller-identity` and `aws configure list`; document what identity the CLI is using. Avoid creating long-lived access keys for this lab.
+- [ ] **First Lambda lab:** Follow [AWS's first Lambda function tutorial](https://docs.aws.amazon.com/lambda/latest/dg/getting-started.html) using Python. Create, invoke with a test JSON event, inspect logs, and clean up resources when finished.
+- [ ] Save `notes/01-foundations.md` and `notes/02-lambda-basics.md`; commit notes and record anything confusing.
 
-**Skill Builder searches:** *AWS SDK*, *Amazon S3*, *Amazon EC2*, *AWS development fundamentals*.
+**Week 1 checkpoint:** Explain why Lambda needs an IAM execution role, what a test event is, where its logs go, and the difference between a Region and an Availability Zone.
 
-- [ ] Study AWS SDK credential provider chain, retries, pagination, and error handling.
-- [ ] Learn S3 object access, storage classes, presigned URLs, and event notifications.
-- [ ] Review EC2, instance roles, basic VPC/security groups, and environment configuration.
-- [ ] **Lab:** Use Python (Boto3) or Node.js AWS SDK to upload and read an S3 object with an IAM role or safe local profile.
-- [ ] Write notes comparing IAM resource policies vs. identity policies.
+### Week 2 — Nov 2–8: Lambda deep dive (starting from zero)
 
-### Week 3 — Nov 9–15: Lambda and API Gateway
+**AWS Skill Builder searches:** *AWS Lambda*, *AWS Lambda foundations*, *AWS Lambda permissions*, *serverless testing*, *Amazon CloudWatch Logs*.
 
-**Skill Builder searches:** *AWS Lambda*, *Amazon API Gateway*, *serverless applications*, *AWS SAM*.
+- [ ] Understand serverless, runtimes, handlers, event/context objects, and synchronous vs. asynchronous invocations.
+- [ ] Learn Lambda execution roles, resource-based permissions, environment variables, memory, timeout, and deployment packages.
+- [ ] Learn how CloudWatch logs work; deliberately trigger a handled error and diagnose it.
+- [ ] Practice Python Lambda unit tests locally with `pytest` and mocked AWS SDK dependencies.
+- [ ] **Lab:** Make a Lambda function that validates an input JSON payload, returns clear success/error responses, and logs useful debugging information.
+- [ ] **Lab:** Test valid, missing, and malformed input events; document expected vs. actual results.
+- [ ] Study AWS SDK for Python (Boto3) basics and credential/permission handling inside Lambda.
+- [ ] Read about concurrency, throttling, retries, idempotency, cold starts, versions, and aliases; explain them in plain language.
+- [ ] Commit `notes/03-lambda-deep-dive.md` and tests in `labs/lambda-basics/`.
 
-- [ ] Learn Lambda lifecycle, memory/timeout, concurrency, versions/aliases, layers, and environment variables.
-- [ ] Study API Gateway routes, auth, stages, throttling, and integrations.
-- [ ] Review SAM or CloudFormation for repeatable serverless deployment.
-- [ ] **Lab:** Deploy a small API Gateway → Lambda API; add structured logging.
-- [ ] Explain Lambda cold starts and idempotency.
+**Week 2 checkpoint:** Explain handler vs. runtime, invocation types, execution role vs. permission to invoke, local unit testing vs. tests in AWS, and what happens if a Lambda invocation fails.
+
+### Week 3 — Nov 9–15: API Gateway + Lambda, testing and repeatable deployment
+
+**AWS Skill Builder searches:** *Amazon API Gateway*, *AWS SAM*, *AWS Lambda testing*, *serverless applications*, *AWS CodeBuild*.
+
+- [ ] Learn API Gateway HTTP endpoints, routes, integrations, authorization, throttling, and stages.
+- [ ] **Lab:** Expose a Lambda function via API Gateway; send requests with `curl` or Postman.
+- [ ] **Lab:** Run integration tests against the deployed API; compare with local unit tests and investigate an IAM or validation error.
+- [ ] Learn environment isolation: separate test/staging resources, Lambda versions and aliases, and what aliases **do not** isolate.
+- [ ] Deploy the API reproducibly with AWS SAM or CloudFormation; avoid relying only on console clicks.
+- [ ] Review safe deployment patterns, validation before release, and CloudWatch logs for troubleshooting.
+- [ ] Commit API, test code, deployment definition, and `notes/04-api-gateway-testing.md`.
+
+**Week 3 checkpoint:** Demonstrate an HTTP request → API Gateway → Lambda → response, and explain how to test and deploy changes safely.
 
 ### Week 4 — Nov 16–22: DynamoDB and databases
 
@@ -130,11 +145,11 @@ Source: [AWS certification update for DVA-C03](https://aws.amazon.com/blogs/trai
 - [ ] **Lab:** Replace a hard-coded configuration secret with Secrets Manager or a secure equivalent.
 - [ ] Review any newly released DVA-C03 security / AI-service integration objectives in the official guide.
 
-### Week 7 — Dec 7–13: Testing and deployment (22%)
+### Week 7 — Dec 7–13: Testing and deployment (22%) — second pass
 
 **Skill Builder searches:** *AWS CodePipeline*, *AWS CodeBuild*, *AWS CodeDeploy*, *AWS SAM*, *deployment strategies*.
 
-- [ ] Understand unit vs. integration tests, mocking AWS services, and pre-deployment validation.
+- [ ] Revisit unit vs. integration vs. end-to-end tests, mocking AWS services, test environments, and pre-deployment validation (build on Weeks 2–3).
 - [ ] Compare rolling, blue/green, canary, and all-at-once deployments.
 - [ ] Review CI/CD stages, approvals, rollback, and deployment artifacts.
 - [ ] **Lab:** Build a GitHub Actions workflow that runs tests and deploys your small serverless app.
@@ -189,7 +204,7 @@ Source: [AWS certification update for DVA-C03](https://aws.amazon.com/blogs/trai
 ### Week 13 — Jan 18–24: Final review and exam
 
 - [ ] Review only weak areas, diagrams, service comparisons, and error log.
-- [ ] Complete a few short question sets; avoid cramming large new topics.
+- [ ] Complete a few short **fresh** question sets; avoid cramming large new topics.
 - [ ] Check test-center travel or online-proctor technical requirements.
 - [ ] **January 23:** Rest, sleep, and prepare ID/check-in details.
 - [ ] **January 24 — EXAM DAY:** Take AWS Certified Developer – Associate (DVA-C03).
@@ -226,28 +241,6 @@ Amazon CloudWatch (logs + alarm)
 - [ ] All paid infrastructure is torn down when no longer needed.
 
 > If Fargate/load balancer costs are inconvenient, prioritize **Skill Builder Builder Labs** and the serverless application instead. The Docker/ECS project improves DevOps skills but isn't necessary to pass every exam objective.
-
-## Practice exam & weak-area log
-
-| Date | Resource | Score | Development | Security | Test/Deploy | Troubleshoot/Optimize | Top weaknesses |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| YYYY-MM-DD | Official Practice Question Set | — | — | — | — | — | — |
-| YYYY-MM-DD | Full-length practice #1 | — | — | — | — | — | — |
-| YYYY-MM-DD | Full-length practice #2 | — | — | — | — | — | — |
-
-**Missed-question journal template:**
-
-```text
-Date:
-Domain / objective:
-Service / concept:
-Why I got it wrong:
-Correct rule / decision point:
-Hands-on test or documentation link:
-Revisit on:
-```
-
-**Avoid score inflation:** Skill Builder practice sets may repeat the same questions on retakes. Track *first attempts* separately from repeats.
 
 ## Resources
 
