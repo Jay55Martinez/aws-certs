@@ -80,8 +80,8 @@ Source: [AWS certification update for DVA-C03](https://aws.amazon.com/blogs/trai
 - [X] Review Regions vs. Availability Zones, shared responsibility, IAM users vs. roles vs. policies, and AWS CLI vs. CloudShell (aim for 1–2 focused sessions).
 - [X] Configure MFA, safe lab access, AWS Budgets and billing alerts before creating resources.
 - [X] **Mini-lab:** In CloudShell run `aws sts get-caller-identity` and `aws configure list`; document what identity the CLI is using. Avoid creating long-lived access keys for this lab.
-- [ ] **First Lambda lab:** Follow [AWS's first Lambda function tutorial](https://docs.aws.amazon.com/lambda/latest/dg/getting-started.html) using Python. Create, invoke with a test JSON event, inspect logs, and clean up resources when finished.
-- [ ] Save `notes/01-foundations.md` and `notes/02-lambda-basics.md`; commit notes and record anything confusing.
+- [x] **First Lambda lab:** Follow [AWS's first Lambda function tutorial](https://docs.aws.amazon.com/lambda/latest/dg/getting-started.html) using Python. Create, invoke with a test JSON event, inspect logs, and clean up resources when finished.
+- [X] Save `notes/01-foundations.md` and `notes/02-lambda-basics.md`; commit notes and record anything confusing.
 
 **Week 1 checkpoint:** Explain why Lambda needs an IAM execution role, what a test event is, where its logs go, and the difference between a Region and an Availability Zone.
 
