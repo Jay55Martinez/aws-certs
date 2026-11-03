@@ -52,7 +52,7 @@ Source: [AWS certification update for DVA-C03](https://aws.amazon.com/blogs/trai
 
 | Week | Dates | Focus | Done |
 | --- | --- | --- | --- |
-| 1 | Oct 27–Nov 1 | Essential AWS foundations + first Lambda | ⬜ |
+| 1 | Oct 27–Nov 1 | Essential AWS foundations + first Lambda | 🟨 |
 | 2 | Nov 2–8 | Lambda deep dive: IAM, events, testing, logging | ⬜ |
 | 3 | Nov 9–15 | API Gateway + Lambda deployment and integration tests | ⬜ |
 | 4 | Nov 16–22 | DynamoDB and data access | ⬜ |
@@ -77,9 +77,9 @@ Source: [AWS certification update for DVA-C03](https://aws.amazon.com/blogs/trai
 - [x] Read the DVA-C03 exam overview and four exam domain weights.
 - [x] Enroll in the relevant Skill Builder [DVA-C03 prep plan](https://skillbuilder.aws/category/exam-prep/developer-associate-DVA-C03).
 - [x] Take Official Practice Question Set baseline: **6/20 (30%)**; see assessment below.
-- [ ] **NEXT:** Review Regions vs. Availability Zones, shared responsibility, IAM users vs. roles vs. policies, and AWS CLI vs. CloudShell (aim for 1–2 focused sessions).
-- [ ] Configure MFA, safe lab access, AWS Budgets and billing alerts before creating resources.
-- [ ] **Mini-lab:** In CloudShell run `aws sts get-caller-identity` and `aws configure list`; document what identity the CLI is using. Avoid creating long-lived access keys for this lab.
+- [X] Review Regions vs. Availability Zones, shared responsibility, IAM users vs. roles vs. policies, and AWS CLI vs. CloudShell (aim for 1–2 focused sessions).
+- [X] Configure MFA, safe lab access, AWS Budgets and billing alerts before creating resources.
+- [X] **Mini-lab:** In CloudShell run `aws sts get-caller-identity` and `aws configure list`; document what identity the CLI is using. Avoid creating long-lived access keys for this lab.
 - [ ] **First Lambda lab:** Follow [AWS's first Lambda function tutorial](https://docs.aws.amazon.com/lambda/latest/dg/getting-started.html) using Python. Create, invoke with a test JSON event, inspect logs, and clean up resources when finished.
 - [ ] Save `notes/01-foundations.md` and `notes/02-lambda-basics.md`; commit notes and record anything confusing.
 
