@@ -52,8 +52,8 @@ Source: [AWS certification update for DVA-C03](https://aws.amazon.com/blogs/trai
 
 | Week | Dates | Focus | Done |
 | --- | --- | --- | --- |
-| 1 | Oct 27–Nov 1 | Essential AWS foundations + first Lambda | 🟨 |
-| 2 | Nov 2–8 | Lambda deep dive: IAM, events, testing, logging | ⬜ |
+| 1 | Oct 27–Nov 1 | Essential AWS foundations + first Lambda | 🟩 |
+| 2 | Nov 2–8 | Lambda deep dive: IAM, events, testing, logging | 🟨 |
 | 3 | Nov 9–15 | API Gateway + Lambda deployment and integration tests | ⬜ |
 | 4 | Nov 16–22 | DynamoDB and data access | ⬜ |
 | 5 | Nov 23–29 | Integration, events & asynchronous workflows | ⬜ |
